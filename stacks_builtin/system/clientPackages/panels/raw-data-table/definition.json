@@ -1,0 +1,9 @@
+{
+    "name": "raw-data-table",
+    "requiredPackages": ["system.uiTable"],
+    "cssFileList": [],
+    "templateFileList": {},
+    "htmlFileList": ["raw-data-table.html"],
+    "jsFileList": ["raw-data-table.js"],
+    "startupClass": "RawDataTable"
+}

@@ -1,0 +1,100 @@
+/* Style for selected row */
+table.uiTable tbody tr.selected {
+    background-color: rgba(0, 123, 255, 0.1); /* Light blue */
+}
+table.uiTable tbody tr.selected:nth-of-type(odd) {
+	background-color: rgba(0, 123, 255, 0.2);
+}
+/* Style for hover on a selected row */
+table.uiTable tbody tr.selected:hover {
+    background-color: rgba(0, 123, 255, 0.3); /* Slightly darker blue */
+}
+table.uiTable td {
+	border: 0.8px solid rgb(222, 226, 230);
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-collapse: separate;
+	box-sizing: content-box;
+	color: rgb(33, 37, 41);
+	font-family: Montserrat, "Helvetica Neue", Arial, sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 21px;
+	overflow-wrap: break-word;
+	padding-bottom: 12px;
+	padding-left: 7px;
+	padding-right: 7px;
+	padding-top: 12px;
+	text-align: left;
+	text-size-adjust: 100%;
+	vertical-align: middle;
+	-webkit-font-smoothing: antialiased;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+table.uiTable th {
+	border: 0px none rgb(33, 37, 41);
+	border-collapse: separate;
+	box-sizing: content-box;
+	cursor: pointer;            
+	color: rgb(33, 37, 41);
+	font-family: Montserrat, "Helvetica Neue", Arial, sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 21px;
+	overflow-wrap: break-word;
+	padding-bottom: 12px;
+	padding-left: 7px;
+	padding-right: 30px;
+	padding-top: 12px;
+	text-align: left;
+	text-indent: 0px;
+	text-transform: uppercase;
+	text-size-adjust: 100%;
+	vertical-align: middle;
+	-webkit-font-smoothing: antialiased;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+table.uiTable th.asc::after {
+	content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='%235f6368'%3E%3Cpath d='m280-400 200-200 200 200H280Z'/%3E%3C/svg%3E");
+	top: 3px;
+	position: absolute;
+	top: 12px;
+}
+table.uiTable th.desc::after {
+	content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='%235f6368'%3E%3Cpath d='M480-360 280-560h400L480-360Z'/%3E%3C/svg%3E");
+	position: absolute;
+	top: 12px;
+}
+table.uiTable tr {
+	background-color: rgba(0,0,0,0.0);
+	box-sizing: border-box;
+}
+
+table.uiTable tbody tr:nth-of-type(odd) {
+	background-color: rgba(0,0,0,0.05);
+}
+
+table.uiTable tbody tr:hover {
+	background-color: rgba(0,0,0,0.1);
+}
+
+
+table.uiTable {
+	border: 0.8px solid rgb(222, 226, 230);
+	border-collapse: separate;
+	box-sizing: border-box;
+	clear: both;
+	color: rgb(33, 37, 41);
+	font-family: Montserrat, "Helvetica Neue", Arial, sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 21px;
+	margin: 6px 0;
+	max-width: none;
+	overflow-wrap: break-word;
+	position: relative;
+	text-align: left;
+	width:100%;
+	-webkit-font-smoothing: antialiased;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}

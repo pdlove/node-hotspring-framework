@@ -1,0 +1,165 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 32px 1fr; /* Default sidebar width */
+    grid-template-rows: 55px auto 55px;
+    grid-template-areas: 
+        "sidebar header"
+        "sidebar content"
+        "sidebar footer";
+    height: 100vh;
+    transition: grid-template-columns 0.3s;
+}
+side-bar {
+    grid-area: sidebar;
+    background-color: #66615b;
+    color: #f4f3ef;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 32px; /* Collapsed width */
+    overflow: hidden;
+    transition: width 0.3s;
+    z-index: 2;
+}
+side-bar:hover {
+    width: 250px; /* Expanded width */
+}
+header-line {
+    grid-area: header;
+    background-color: #333;
+    background-color: #f4f3ef;
+    color: #66615b;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid #ddd;
+    display: grid;
+    grid-template-columns: 35px auto auto;
+    width: calc(100%-20px);
+}
+footer-line {
+    grid-area: footer;
+    background-color: #333;
+    background-color: #f4f3ef;
+    color: #66615b;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-top: 1px solid #ddd;
+}
+main-content {
+    grid-area: content;
+    padding: 20px;
+    background-color: #f4f3ef;
+    color: #66615b;
+    overflow-y: auto; /* To handle overflow in the content area */
+}
+
+ui-card {
+    display: block;
+    background-color: white;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 10px -3px rgba(0,0,0,.23), 0 6px 10px -5px rgba(0,0,0,.25);
+}
+
+.full-size {
+    width: calc(100% - 24px);
+    height: calc(100% - 24px);
+    padding: 10px;
+}
+.content-size {
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+}
+
+/* This is generally only used on the sidebar */
+.logo-text {
+    display: block;
+    opacity: 1;
+    padding: 11px 0 8px;
+    -webkit-transform: translate3d(0px, 0, 0);
+    -moz-transform: translate3d(0px, 0, 0);
+    -o-transform: translate3d(0px, 0, 0);
+    -ms-transform: translate3d(0px, 0, 0);
+    transform: translate3d(0px, 0, 0);
+    text-transform: uppercase;
+    padding: 0.5rem 0;
+    display: block;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 400;
+    line-height: 30px;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Bar after the logo and after the user */
+.logo-text:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    height: 1px;
+    width: calc(100% - 30px);
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Items for the top bar */
+.btn {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    font-weight: 600;
+    border: none;
+    background-color: #66615b;
+    color: #FFFFFF;
+    transition: all .15s linear;
+}
+
+.btn.btn-icon {
+    height: 2.375rem;
+    min-width: 2.375rem;
+    width: 2.375rem;
+    padding: 0;
+    font-size: .9375rem;
+    overflow: hidden;
+    position: relative;
+    line-height: normal;
+}
+
+.btn-round {
+    border-radius: 30px;
+    border-width: 1px;
+}
+
+.btn-rotate:focus i, .btn-rotate:hover i {
+    color: #ef8157;
+    transform: rotate(53deg);
+}
+.btn-rotate i {
+    transition: all .37s cubic-bezier(.34,1.61,.7,1);
+}
+
+header-line .title {
+    text-transform: capitalize;
+    font-size: 20px;
+    padding-left: 15px;
+}
+
+header-line #iconbar {
+    justify-self:end;
+    display: flex;
+}
+@media  screen and (min-width: 800px) {
+    body { grid-template-columns: 250px 1fr; }
+    side-bar {width: 250px;}
+    
+}
+

@@ -1,0 +1,37 @@
+{
+  "name": "hotspring-framework",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "asn1-ber": "^1.2.2",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "clean-css": "^5.3.3",
+    "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "handlebars": "^4.7.8",
+    "html-minifier": "^4.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "path": "^0.12.7",
+    "pg": "^8.12.0",
+    "pg-hstore": "^2.3.4",
+    "pluralize": "^8.0.0",
+    "sequelize": "^6.37.5",
+    "sequelize-where": "^1.0.1",
+    "uglify-js": "^3.19.2",
+    "undici-types": "^6.19.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.1",
+    "chai": "^5.1.2",
+    "eslint": "^9.9.1",
+    "globals": "^15.9.0",
+    "mocha": "^11.1.0"
+  }
+}

@@ -1,0 +1,9 @@
+{
+    "name": "vm-list",
+    "requiredPackages": ["system.uiTable"],
+    "cssFileList": [],
+    "templateFileList": {},
+    "htmlFileList": ["vm-list.html"],
+    "jsFileList": ["vm-list.js"],
+    "startupClass": "screen_vmlist"
+}

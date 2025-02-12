@@ -1,0 +1,9 @@
+{
+    "name": "job-runner",
+    "requiredPackages": ["system.uiTable"],
+    "cssFileList": [],
+    "templateFileList": {},
+    "htmlFileList": ["job-runner.html"],
+    "jsFileList": ["job-runner.js"],
+    "startupClass": "JobRunScreen"
+}

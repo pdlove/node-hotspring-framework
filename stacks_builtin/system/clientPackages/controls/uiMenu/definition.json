@@ -1,0 +1,12 @@
+{
+    "name": "uiMenu",
+    "requiredPackages": null,
+    "cssFileList": ["uiMenu.css"],
+    "htmlFileList": null,
+    "templateFileList_defunct": {
+        "uiMenuTemplate": { "file": "uiMenu.hbs", "isPartial": false }, 
+        "uiMenuItemTemplate": { "file": "uiMenuItem.hbs", "isPartial": true }
+    },
+    "jsFileList": ["uiMenu.js","uiMenuItem.js"],
+    "startupClass": "uiMenu"
+}

@@ -1,0 +1,11 @@
+{
+    "name": "template",
+    "requiredPackages": [],
+    "cssFileList": [],
+    "htmlFileList": [],
+    "templateFileList": {
+        "exampleTemplate": { "file": "example.hbs", "isPartial": false }
+    },
+    "jsFileList": ["examplescript.js"],
+    "startupClass": "ExampleClass"
+}

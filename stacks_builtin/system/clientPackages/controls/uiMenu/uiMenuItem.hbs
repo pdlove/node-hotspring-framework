@@ -1,0 +1,29 @@
+<li class="{{#if isSelected}}active{{/if}} {{#if (and isSelected (eq children.length 0))}}activetick{{/if}}">
+  <a href="#" class="{{#if children.length}}collapsable {{#unless isSelected}}collapsed{{/unless}} has-children{{else}}no-children{{/if}}" data-menu-id="{{menuID}}">
+    
+    {{#if iconClass}}
+      <i class="{{iconClass}}"></i>
+    {{else}}
+      <span class="text-icon">{{iconText}}</span>
+    {{/if}}
+
+    {{#if parent}}
+      <span class="normal">{{name}}</span>
+    {{else}}
+      <p>{{name}}</p>
+    {{/if}}
+
+    {{#if children.length}}
+      <b class="caret"></b>
+    {{/if}}
+
+  </a>
+
+  {{#if children.length}}
+    <ul class="sub">
+      {{#each children}}
+        {{> uiMenuItemTemplate}}
+      {{/each}}
+    </ul>
+  {{/if}}
+</li>

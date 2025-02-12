@@ -1,0 +1,10 @@
+{
+    "name": "uiTable",
+    "description": "Sortable data-driven table",
+    "requiredPackages": null,
+    "cssFileList": ["uiTable.css"],
+    "templateFileList": {},
+    "htmlFileList": [],
+    "jsFileList": ["uiTable.js","uiTableColumn.js","uiTableRow.js"],
+    "startupClass": "uiTable"
+}
