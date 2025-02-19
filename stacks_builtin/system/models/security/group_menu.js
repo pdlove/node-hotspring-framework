@@ -1,20 +1,20 @@
-const { HotspringObjectType, DataTypes } = require('../../../../lib/HotspringObjectType');
+const { HotspringModel, DataTypes } = require('../../../../lib/HotspringModel');
 
-class GroupMenu extends HotspringObjectType {
-  name = 'group_menu';
-  autoRoute = true; // Creates CRUD Routes and CRUD Views automatically.
-  defaultWriteAccess = 'admin'; // admin, user, public
-  defaultReadAccess = 'admin'; // admin, user, public
+class GroupMenu extends HotspringModel {
+  static name = 'group_menu';
+  static autoRoute = true; // Creates CRUD Routes and CRUD Views automatically.
+  static defaultWriteAccess = 'admin'; // admin, user, public
+  static defaultReadAccess = 'admin'; // admin, user, public
 
-  sequelizeDefinition = {
+  static sequelizeDefinition = {
     groupMenuID: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     groupID: { type: DataTypes.INTEGER, allowNull: false },
     menuId: { type: DataTypes.INTEGER, allowNull: false },
-    accessLevel: { type: DataTypes.INTEGER, allowNull: false }    
+    accessLevel: { type: DataTypes.INTEGER, allowNull: false }
   };
-  sequelizeConnections = [
+  static sequelizeConnections = [
     { connection: "1M", parentType: "system.group", parentKey: "groupID", childType: "system.group_menu", childKey: "groupID" },
-    { connection: "1M", parentType: "system.menu", parentKey: "menuID", childType: "system.group_menu", childKey: "menuID" },    
+    { connection: "1M", parentType: "system.menu", parentKey: "menuID", childType: "system.group_menu", childKey: "menuID" },
   ]
 }
 

@@ -4,19 +4,19 @@ class RawDataTable {
     tableObject = null;
 
     stack = null;
-    objectType = null;
+    model = null;
 
     async setParameters(parameters) {
         if (!parameters) return;
         this.stack = parameters.stack;
-        this.objectType = parameters.objectType;
+        this.model = parameters.model;
         //this.panel = parameters.panel;
     }
 
     async renderDOM(destDOM) {
         if (destDOM) this.parentDOM=destDOM;
         this.tableDOM = this.parentDOM.querySelector('#thisTable');
-        this.data = (await API.getAPIData("system/objectTypes/"+this.stack+"/"+this.objectType)).items;
+        this.data = (await API.getAPIData("system/model/"+this.stack+"/"+this.model)).items;
         this.tableObject = await loadClientPackage("system.uiTable", this.tableDOM, {tableRows: this.data});
         this.tableObject.setData(this.data);
         this.tableObject.renderDOM(this.tableDOM);

@@ -1,12 +1,12 @@
-const { HotspringObjectType, DataTypes } = require('../../../lib/HotspringObjectType');
+const { HotspringModel, DataTypes } = require('../../../lib/HotspringModel');
 
-class Job extends HotspringObjectType {
-  name = 'job';
-  autoRoute = true; // Creates CRUD Routes and CRUD Views automatically.
-  defaultWriteAccess = 'admin'; //admin, user, public
-  defaultReadAccess = 'admin'; //admin, user, public
+class Job extends HotspringModel {
+  static name = 'job';
+  static autoRoute = true; // Creates CRUD Routes and CRUD Views automatically.
+  static defaultWriteAccess = 'admin'; //admin, user, public
+  static defaultReadAccess = 'admin'; //admin, user, public
 
-  sequelizeDefinition = {
+  static sequelizeDefinition = {
     jobID: { type: DataTypes.INTEGER, allowNull: false, primaryKey: true, autoIncrement: true },
     name: { type: DataTypes.STRING, allowNull: false },
     description: { type: DataTypes.STRING, allowNull: false },

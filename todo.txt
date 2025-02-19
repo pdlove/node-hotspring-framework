@@ -1,0 +1,5 @@
+Update HotspringModel to throw a proper error if sequelizeObject is undefined.
+Need a way for a stack to introduce related menu items
+There is a bug in the express routing module I created that allows for "/api/system/model/system/stack" to actually call "/api/system/stack"
+Need to create the HotspringJob to allow running a job from a database entry.
+Add scheduling for automatic execution of HotspringJobs

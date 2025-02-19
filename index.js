@@ -1,6 +1,6 @@
 const { HotspringStack } = require('./lib/hotspringStack');
 const { HotspringClientPackage } = require('./lib/hotspringClientPackage');
-const { HotspringObjectType, DataTypes } = require('./lib/HotspringObjectType');
+const { HotspringModel, DataTypes } = require('./lib/HotspringModel');
 const { HotspringRoute } = require('./lib/hotspringRoute');
 const { HotspringWebServer } = require('./lib/hotspringWebServer');
 const { HotspringGlobal } = require('./lib/hotspringGlobal');
@@ -51,7 +51,7 @@ async function hotspring_Initalization(configuration, startWebServer){
 
 
 
-module.exports = { HotspringStack, HotspringClientPackage, HotspringObjectType, DataTypes, HotspringRoute, hotspring_Initalization };
+module.exports = { HotspringStack, HotspringClientPackage, HotspringModel, DataTypes, HotspringRoute, hotspring_Initalization };
 
 // // Mapping SQL operators to Sequelize operators
 // const operatorsMap = {

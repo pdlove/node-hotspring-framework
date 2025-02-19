@@ -115,29 +115,29 @@ class uiMenuItem {
                 //This is a special case.
                 let menuID=1001;
                 let menuItems = [];
-                if (this.clientPackageParameters.subMenu==='objectTypes') {
+                if (this.clientPackageParameters.subMenu==='models') {
                     let stackList = (await API.getAPIData('system/stack/')).items;
                     for (let idx in stackList) {
                         if (!stackList[idx].enabled) continue; //Skip disabled stacks.
                         const stackName = stackList[idx].name;
-                        let objectTypeList = (await API.getAPIData('system/objectType/'+stackName)); 
+                        let modelList = (await API.getAPIData('system/model/'+stackName)); 
                         let stackMenuID = menuID++;
                         menuItems.push({ menuID: stackMenuID, 
                                         parent_menu_id: this.menuID,
                                         name: stackName});
                         
-                        for (let objectTypeName in objectTypeList) {
-                            let objectTypeMenuID = menuID++;
+                        for (let modelName in modelList) {
+                            let modelMenuID = menuID++;
                             menuItems.push({
-                                menuID: objectTypeMenuID,
+                                menuID: modelMenuID,
                                 parent_menu_id: stackMenuID,
-                                name: objectTypeName,
+                                name: modelName,
                                 clientPackage: "system.raw-data-table",
-                                clientPackageParameters: { stack: stackName, objectType: objectTypeName, indexFields: objectTypeList[objectTypeName] }
+                                clientPackageParameters: { stack: stackName, model: modelName, indexFields: modelList[modelName] }
                             });
                         }
-                        console.log(objectTypeList);
-                                    //    clientPackage: "system.raw-data-table", clientPackageParameters: {"objectType": } }
+                        console.log(modelList);
+                                    //    clientPackage: "system.raw-data-table", clientPackageParameters: {"model": } }
                     }                    
                 }
                 this.inMenu.addData(menuItems);
