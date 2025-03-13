@@ -15,10 +15,7 @@ class RawDataTable {
 
     async renderDOM(destDOM) {
         if (destDOM) this.parentDOM=destDOM;
-        this.tableDOM = this.parentDOM.querySelector('#thisTable');
 
-        this.tableObject = await loadClientPackage("system.uiTable", this.tableDOM);
-        await this.updateDOM();
 
         // Add event listeners to the refresh-button and filter-button
         const refreshButton = this.parentDOM.querySelector('#refresh-button');
@@ -31,6 +28,12 @@ class RawDataTable {
         if (filterButton) {
             filterButton.addEventListener('click', () => this.updateDOM());
         }
+
+        this.tableDOM = this.parentDOM.querySelector('#thisTable');
+
+        this.tableObject = await loadClientPackage("system.uiTable", this.tableDOM);
+        await this.updateDOM();
+
     }
     
     async updateDOM() {
