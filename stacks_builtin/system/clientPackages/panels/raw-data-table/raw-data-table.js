@@ -16,23 +16,35 @@ class RawDataTable {
     async renderDOM(destDOM) {
         if (destDOM) this.parentDOM=destDOM;
         this.tableDOM = this.parentDOM.querySelector('#thisTable');
-        this.data = (await API.getAPIData("system/model/"+this.stack+"/"+this.model)).items;
-        this.tableObject = await loadClientPackage("system.uiTable", this.tableDOM, {tableRows: this.data});
+
+        this.tableObject = await loadClientPackage("system.uiTable", this.tableDOM);
+        await this.updateDOM();
+
+        // Add event listeners to the refresh-button and filter-button
+        const refreshButton = this.parentDOM.querySelector('#refresh-button');
+        const filterButton = this.parentDOM.querySelector('#filter-button');
+
+        if (refreshButton) {
+            refreshButton.addEventListener('click', () => this.updateDOM());
+        }
+
+        if (filterButton) {
+            filterButton.addEventListener('click', () => this.updateDOM());
+        }
+    }
+    
+    async updateDOM() {
+        // Get the filter value from the text field with ID 'filter-json'
+        const filterField = this.parentDOM.querySelector('#filter-json');
+        const filterValue = filterField ? filterField.value : '';
+
+        // Pass the filter value as a parameter to the system/model API call
+        let apiUrl = `system/model/${this.stack}/${this.model}`;
+        if (filterValue!='') apiUrl+=`?filter=${filterValue}`;
+
+        this.data = (await API.getAPIData(apiUrl)).items;
+
         this.tableObject.setData(this.data);
         this.tableObject.renderDOM(this.tableDOM);
-
-
-
-        // var myTable = new uiTable();
-        // myTable.addColumn({ name:"host_name", caption: "Host"});
-        // myTable.addColumn({ name:"vm_name", caption: "VM"});
-        // myTable.addColumn({ name:"cpu.core_count", caption: "vCPUs"});
-        // myTable.addColumn({ name:"memory.mem_starting_gb", caption: "Mem GB"});
-        // myTable.addColumn({ name:"memory.mem_dynamic", caption: "Dynamic Mem", type:"bool"});
-        // myTable.addColumn({ name:"bootSettings.firmware_type", caption: "Firmware"});
-        // let HyperVData = await loadData('vms');
-        // myTable.setData(HyperVData);
-        // myTable.setSort([["host_name",1],["vm_name",-1]]);
-        // myTable.renderHTML(document.getElementById("sortableTable"));
     }
 }

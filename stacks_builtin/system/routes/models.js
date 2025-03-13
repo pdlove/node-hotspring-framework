@@ -14,6 +14,10 @@ class modelRoutes extends HotspringRoute {
         try {
             const reqStack = req.params.stack;
             const reqModel = req.params.model;
+
+            let filter = req.query.filter;
+            if (filter) filter = JSON.parse(filter);
+
             if (!reqModel) {
                 //Need to send out a list of models.
                 if (!global.hotspring.stacks[reqStack]) {
@@ -30,7 +34,7 @@ class modelRoutes extends HotspringRoute {
                 return true;
             } else {
                 const model = global.hotspring.stacks[reqStack].models[reqModel];
-                res.json(await model.browseObjects(null,null,null,1000));
+                res.json(await model.browseObjects(filter,null,null,1000));
                 return true;
             }
         }

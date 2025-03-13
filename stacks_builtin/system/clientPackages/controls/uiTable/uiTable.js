@@ -11,7 +11,7 @@ class uiTable {
     }
 
     //Data
-    tableRows={};
+    tableRows=null;
     allColumns={};
     displayColumns=[];
     indexField="";
@@ -35,8 +35,9 @@ columns:
             this.setData(parameters.tableRows);
     }
     async renderDOM(destDOM) {
-        destDOM.innerHTML='';
-        this.renderHTML(destDOM);
+        if (destDOM) this.parentDOM=destDOM;
+        if (!this.tableRows) return false; 
+        this.renderHTML(this.parentDOM);
     }
 
     addColumn(options, position) {
@@ -68,6 +69,7 @@ columns:
     }
 
     renderHTML(div) {
+        div.innerHTML='';
         //If there aren't any columns defined, get them from the datasource.
         if (Object.keys(this.allColumns).length==0) {
             for (let test in this.tableRows[0])
