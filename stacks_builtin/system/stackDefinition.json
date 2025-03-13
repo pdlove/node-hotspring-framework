@@ -1,5 +1,5 @@
 {
-  "name": "system",
+  "stackName": "system",
   "description": "Functions used by the system including the basic User Management, some basic controls, routes related to loading SPA data.",
   "configuration": {}
 }

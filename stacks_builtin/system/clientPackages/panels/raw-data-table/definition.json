@@ -1,5 +1,5 @@
 {
-    "name": "raw-data-table",
+    "packageName": "raw-data-table",
     "requiredPackages": ["system.uiTable"],
     "cssFileList": [],
     "templateFileList": {},

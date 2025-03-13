@@ -15,7 +15,7 @@ class uiMenu {
     async setParameters(parameters) {
         if (!parameters) return;
         if (!parameters.menuData)
-            parameters.menuData = (await API.getAPIData('system/menu/')).items;
+            parameters.menuData = (await API.getAPIData('system/menu/'));
         this.loadData(parameters.menuData);
         
         if (parameters.panel)

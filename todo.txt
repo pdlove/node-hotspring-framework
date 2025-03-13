@@ -1,5 +1,18 @@
-Update HotspringModel to throw a proper error if sequelizeObject is undefined.
-Need a way for a stack to introduce related menu items
-There is a bug in the express routing module I created that allows for "/api/system/model/system/stack" to actually call "/api/system/stack"
-Need to create the HotspringJob to allow running a job from a database entry.
-Add scheduling for automatic execution of HotspringJobs
+Features in Development:
+    Need to create the HotspringJob to allow running a job from a database entry.
+        Screen to create a Job from a Hotspring Job Template.
+        Job Server to execute pending HotspringJobs
+        Job Status Reporting
+        Automatic Rescheduling Jobs that are set to be scheduled
+        Alerting when jobs stop that are "Service" jobs
+Next Features to Develop:
+    Need a way for a stack to introduce related menu items
+    Implement a Data Interaction Object that is passed to jobs and routes.
+        This object will contain only the models that the job or route declares it needs with declared permissions.
+Future Features:
+    Implement User Login Process (Global on/off for this function)
+    Add "Security Filtering" to models that is always applied for current users.
+
+Possible Bugs:
+    Update HotspringModel to throw a proper error if sequelizeObject is undefined.
+    There is a bug in the express routing module I created that allows for "/api/system/model/system/stack" to actually call "/api/system/stack"

@@ -1,7 +1,7 @@
 const { HotspringModel, DataTypes } = require('../../../lib/HotspringModel');
 
 class Organization extends HotspringModel {
-  static name = 'organization';
+  static modelName = 'organization';
   static autoRoute = true; // Creates CRUD Routes and CRUD Views automatically.
   static defaultWriteAccess = 'admin'; //admin, user, public
   static defaultReadAccess = 'user'; //admin, user, public

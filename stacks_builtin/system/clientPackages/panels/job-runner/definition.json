@@ -1,5 +1,5 @@
 {
-    "name": "job-runner",
+    "packageName": "job-runner",
     "requiredPackages": ["system.uiTable"],
     "cssFileList": [],
     "templateFileList": {},

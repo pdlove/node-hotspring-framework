@@ -3,7 +3,7 @@ const path = require('path');
 const mime = require('mime-types');
 
 class uiRoutes extends HotspringRoute {
-    name = 'ui';
+    routeName = 'ui';
 
     defaultAccess = 'admin'; // admin, user, public
     apiRoutes() {

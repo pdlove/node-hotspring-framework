@@ -1,10 +1,11 @@
 const { HotspringModel, DataTypes } = require('../../../../lib/HotspringModel');
 
 class Menu extends HotspringModel {
-  static name = 'menu';
+  static modelName = 'menu';
   static autoRoute = true; // Creates CRUD Routes and CRUD Views automatically.
   static defaultWriteAccess = 'admin'; //admin, user, public
   static defaultReadAccess = 'user'; //admin, user, public
+  static defaultBrowsePageSize = 0; // 0 means no limit
 
   static sequelizeDefinition = {
     menuID: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },

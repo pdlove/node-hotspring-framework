@@ -1,7 +1,7 @@
 const { HotspringRoute } = require('../../../lib/hotspringRoute');
 
 class modelRoutes extends HotspringRoute {
-    name = 'ui';
+    routeName = 'ui';
 
     defaultAccess = 'admin'; // admin, user, public
     apiRoutes() {

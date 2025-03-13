@@ -1,7 +1,7 @@
 const { HotspringModel, DataTypes } = require('../../../../lib/HotspringModel');
 
 class GroupMenu extends HotspringModel {
-  static name = 'group_menu';
+  static modelName = 'group_menu';
   static autoRoute = true; // Creates CRUD Routes and CRUD Views automatically.
   static defaultWriteAccess = 'admin'; // admin, user, public
   static defaultReadAccess = 'admin'; // admin, user, public

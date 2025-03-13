@@ -1,5 +1,5 @@
 {
-    "name": "uiMenu",
+    "packageName": "uiMenu",
     "requiredPackages": null,
     "cssFileList": ["uiMenu.css"],
     "htmlFileList": null,

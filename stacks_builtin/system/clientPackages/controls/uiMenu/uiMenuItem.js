@@ -31,7 +31,13 @@ class uiMenuItem {
             this.iconText = (inData.iconText||'');
             this.name = inData.name;
             this.clientPackage = (inData.clientPackage||null);
-            this.clientPackageParameters = (inData.clientPackageParameters||null);
+            if (typeof inData.clientPackageParameters === 'string') {
+                this.clientPackageParameters = JSON.parse(inData.clientPackageParameters);
+            } else if (inData.clientPackageParameters === undefined || inData.clientPackageParameters === null) {
+                this.clientPackageParameters = {};
+            } else {
+                this.clientPackageParameters = inData.clientPackageParameters;
+            }
             this.external_link = (inData.external_link||null);
             this.isSelected = (inData.isSelected||false);
 			if (this.iconClass===''&&this.iconText==='') this.iconText=this.name[0];
@@ -116,10 +122,10 @@ class uiMenuItem {
                 let menuID=1001;
                 let menuItems = [];
                 if (this.clientPackageParameters.subMenu==='models') {
-                    let stackList = (await API.getAPIData('system/stack/')).items;
+                    let stackList = (await API.getAPIData('system/stack/'));
                     for (let idx in stackList) {
                         if (!stackList[idx].enabled) continue; //Skip disabled stacks.
-                        const stackName = stackList[idx].name;
+                        const stackName = stackList[idx].stackName;
                         let modelList = (await API.getAPIData('system/model/'+stackName)); 
                         let stackMenuID = menuID++;
                         menuItems.push({ menuID: stackMenuID, 

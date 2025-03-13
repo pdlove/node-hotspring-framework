@@ -1,5 +1,5 @@
 {
-    "name": "uiTable",
+    "packageName": "uiTable",
     "description": "Sortable data-driven table",
     "requiredPackages": null,
     "cssFileList": ["uiTable.css"],
