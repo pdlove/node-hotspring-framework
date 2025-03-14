@@ -5,14 +5,23 @@ Features in Development:
         Job Status Reporting
         Automatic Rescheduling Jobs that are set to be scheduled
         Alerting when jobs stop that are "Service" jobs
+    Update Models to allow multi-column pkeys
+    Update Models to create relationships
+
 Next Features to Develop:
     Need a way for a stack to introduce related menu items
     Implement a Data Interaction Object that is passed to jobs and routes.
         This object will contain only the models that the job or route declares it needs with declared permissions.
+    Add support for a Virtual Model that aggregates Data but has relationships and fields (really a view)
+
 Future Features:
     Implement User Login Process (Global on/off for this function)
     Add "Security Filtering" to models that is always applied for current users.
+    Add a "compressed" field to a sequelize Deifinition to allow specifying to use zlib.
 
 Possible Bugs:
     Update HotspringModel to throw a proper error if sequelizeObject is undefined.
     There is a bug in the express routing module I created that allows for "/api/system/model/system/stack" to actually call "/api/system/stack"
+
+Completed:
+    
