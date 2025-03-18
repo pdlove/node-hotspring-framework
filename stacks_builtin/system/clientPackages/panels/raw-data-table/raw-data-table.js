@@ -5,11 +5,13 @@ class RawDataTable {
 
     stack = null;
     model = null;
+    filter = '';
 
     async setParameters(parameters) {
         if (!parameters) return;
         this.stack = parameters.stack;
         this.model = parameters.model;
+        if (parameters.filter) this.filter = parameters.filter;
         //this.panel = parameters.panel;
     }
 
@@ -29,9 +31,14 @@ class RawDataTable {
             filterButton.addEventListener('click', () => this.updateDOM());
         }
 
+        const filterField = this.parentDOM.querySelector('#filter-json');
+        filterField.value = this.filter || '';
+
         this.tableDOM = this.parentDOM.querySelector('#thisTable');
 
         this.tableObject = await loadClientPackage("system.uiTable", this.tableDOM);
+
+
         await this.updateDOM();
 
     }
