@@ -32,7 +32,7 @@ class RawDataTable {
         }
 
         const filterField = this.parentDOM.querySelector('#filter-json');
-        filterField.value = this.filter || '';
+        filterField.value = JSON.stringify(this.filter) || '';
 
         this.tableDOM = this.parentDOM.querySelector('#thisTable');
 
