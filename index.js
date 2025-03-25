@@ -5,6 +5,7 @@ const { HotspringRoute } = require('./lib/hotspringRoute');
 const { HotspringWebServer } = require('./lib/hotspringWebServer');
 const { HotspringGlobal } = require('./lib/hotspringGlobal');
 const { HotspringJob } = require('./lib/hotspringJob');
+const { Op, Sequelize } = require('sequelize');
 
 async function hotspring_Initalization(configuration, startWebServer){
    global.hotspring = new HotspringGlobal(configuration);
@@ -52,75 +53,5 @@ async function hotspring_Initalization(configuration, startWebServer){
 
 
 
-module.exports = { HotspringStack, HotspringClientPackage, HotspringModel, DataTypes, HotspringRoute, hotspring_Initalization, HotspringJob };
+module.exports = { HotspringStack, HotspringClientPackage, HotspringModel, DataTypes, HotspringRoute, hotspring_Initalization, HotspringJob, Op, Sequelize };
 
-// // Mapping SQL operators to Sequelize operators
-// const operatorsMap = {
-//   '>': Op.gt,
-//   '>=': Op.gte,
-//   '<': Op.lt,
-//   '<=': Op.lte,
-//   '=': Op.eq,
-//   '!=': Op.ne,
-//   'LIKE': Op.like,
-//   'IN': Op.in,
-//   'NOT IN': Op.notIn,
-// };
-
-// // Regex for individual conditions (handles no spaces around operators)
-// const conditionRegex = /(\w+)\s*(>=|<=|!=|>|<|=|LIKE|IN|NOT IN)\s*(\(.+?\)|'.+?'|\S+)/gi;
-
-// // Function to parse SQL-like WHERE conditions
-// const parseSqlLikeWhere = (sqlWhere) => {
-//   // TODO: Revisit this. It's ChatGPT code and isn't working as expected. with (deviceID>1 AND SNMPVersion<2) OR (DeviceName='Router')
-
-//   // Helper function to process individual conditions
-//   const processCondition = (condition) => {
-//     const match = condition.match(conditionRegex);
-//     if (!match) throw new Error(`Invalid condition: "${condition}"`);
-//     const [, key, operator, valueRaw] = conditionRegex.exec(condition);
-
-//     let value = valueRaw.trim();
-//     if (value.startsWith("'") && value.endsWith("'")) {
-//       value = value.slice(1, -1); // Remove quotes for strings
-//     } else if (value.startsWith('(') && value.endsWith(')')) {
-//       value = value
-//         .slice(1, -1)
-//         .split(',')
-//         .map((v) => v.trim().replace(/^'|'$/g, '')); // Parse IN list
-//     } else if (!isNaN(value)) {
-//       value = Number(value); // Parse numbers
-//     }
-
-//     return { [key]: { [operatorsMap[operator]]: value } };
-//   };
-
-//   // Recursive function to handle parentheses
-//   const parseExpression = (expression) => {
-//     expression = expression.trim();
-
-//     // Handle parentheses
-//     while (expression.includes('(')) {
-//       expression = expression.replace(/\(([^()]+)\)/g, (_, inner) => {
-//         const parsed = parseExpression(inner);
-//         return JSON.stringify(parsed); // Temporarily replace the inner condition with JSON
-//       });
-//     }
-
-//     // Split by logical operators (AND, OR)
-//     const orParts = expression.split(/\s+OR\s+/i).map((part) => part.trim());
-//     if (orParts.length > 1) {
-//       return { [Op.or]: orParts.map((part) => parseExpression(part)) };
-//     }
-
-//     const andParts = expression.split(/\s+AND\s+/i).map((part) => part.trim());
-//     if (andParts.length > 1) {
-//       return { [Op.and]: andParts.map((part) => parseExpression(part)) };
-//     }
-
-//     // Process individual condition
-//     return processCondition(expression);
-//   };
-
-//   return parseExpression(sqlWhere);
-// };

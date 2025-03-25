@@ -18,6 +18,13 @@ class modelRoutes extends HotspringRoute {
             let filter = req.query.filter;
             if (filter) filter = JSON.parse(filter);
 
+            let pageSize = req.query.pageSize;
+            if (!pageSize) pageSize = 100000;
+
+            let pageNum = req.query.pageNum;
+            if (!pageNum) pageNum = 1;
+
+            //TODO: Add ability to pass sort order.
             if (!reqModel) {
                 //Need to send out a list of models.
                 if (!global.hotspring.stacks[reqStack]) {
@@ -34,7 +41,7 @@ class modelRoutes extends HotspringRoute {
                 return true;
             } else {
                 const model = global.hotspring.stacks[reqStack].models[reqModel];
-                res.json(await model.browseObjects(filter,null,null,1000));
+                res.json(await model.browseObjects(filter,null,pageSize, pageNum));
                 return true;
             }
         }

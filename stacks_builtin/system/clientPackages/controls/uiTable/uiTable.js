@@ -20,7 +20,7 @@ class uiTable {
     #domTable = null;
 	#domTHead = null;
 	#domTBody = null;
-	
+
     constructor(options) {
     
     }
@@ -70,6 +70,10 @@ columns:
 
     renderHTML(div) {
         div.innerHTML='';
+
+        if (this.tableRows.length===0)
+            div.innerHTML="No Data to Display";
+
         //If there aren't any columns defined, get them from the datasource.
         if (Object.keys(this.allColumns).length==0) {
             for (let test in this.tableRows[0])

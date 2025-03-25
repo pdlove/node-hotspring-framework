@@ -48,10 +48,21 @@ class RawDataTable {
         const filterField = this.parentDOM.querySelector('#filter-json');
         const filterValue = filterField ? filterField.value : '';
 
+        // Get the page size value from the dropdown with ID 'page-size'
+        const pageSizeField = this.parentDOM.querySelector('#page-size');
+        const pageSizeValue = pageSizeField ? pageSizeField.value : '1000'; // Default to 1000 if not set
+        if (pageSizeValue === 'all') pageSizeValue = -1;
+
         // Pass the filter value as a parameter to the system/model API call
         let apiUrl = `system/model/${this.stack}/${this.model}`;
-        if (filterValue!='') apiUrl+=`?filter=${filterValue}`;
-
+        const queryParams = [];
+        if (filterValue) queryParams.push(`filter=${encodeURIComponent(filterValue)}`);
+        if (pageSizeValue) {
+            queryParams.push(`pageSize=${pageSizeValue}`);
+            queryParams.push(`pageNum=1`);
+        }
+        if (queryParams.length > 0) apiUrl += `?${queryParams.join('&')}`;
+    
         this.data = (await API.getAPIData(apiUrl)).items;
 
         this.tableObject.setData(this.data);
