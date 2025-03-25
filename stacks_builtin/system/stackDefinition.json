@@ -3,12 +3,9 @@
   "description": "Functions used by the system including the basic User Management, some basic controls, routes related to loading SPA data.",
   "configuration": {},
   "menuItems": [
-    { "name": "users", "displayText": "User Security", "menuPath": "Administration",
-    "clientPackage": "system.user-management", "clientPackageParameters": { } },
-    { "name": "platform", "displayText": "Platform Configuration", "menuPath": "Administration>Security",
-    "clientPackage": "system.platform-config", "clientPackageParameters": { } },
-    { "name": "Raw Data", "displayText": "Raw Data", "menuPath": "Debug",
-    "clientPackage": "system.uiMenu", "clientPackageParameters": { "subMenu": "models" } }
-  ],
+    { "name": "users", "displayText": "User Security", "menuPath": "Administration", "defaultGroup": "admin", "clientPackage": "system.user-management", "clientPackageParameters": { } },
+    { "name": "platform", "displayText": "Platform Configuration", "menuPath": "Administration>Security", "defaultGroup": "admin", "clientPackage": "system.platform-config", "clientPackageParameters": { } },
+    { "name": "Raw Data", "displayText": "Raw Data", "menuPath": "Debug", "defaultGroup": "admin", "clientPackage": "system.uiMenu", "clientPackageParameters": { "subMenu": "models" } }    
+    ],
   "modelsToSeed": [ "user", "menu", "group", "group_menu", "group_user" ]
 }

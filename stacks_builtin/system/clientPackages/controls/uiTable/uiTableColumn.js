@@ -122,7 +122,7 @@ class uiTableColumn {
                     displayData = '<input type="checkbox">';
                     break;
             default:
-                displayData = rawValue.toString();
+                displayData = rawValue;
                 break;
         }
         return displayData;

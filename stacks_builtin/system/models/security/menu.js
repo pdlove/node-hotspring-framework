@@ -20,7 +20,7 @@ class Menu extends HotspringModel {
     enabled: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true },
     debug: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
     production: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true },
-    stackID: { type: DataTypes.INTEGER, allowNull: false }
+    stackID: { type: DataTypes.INTEGER, allowNull: true }
   };
 
   static sequelizeConnections = [    
