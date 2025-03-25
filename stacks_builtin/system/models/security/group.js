@@ -7,14 +7,23 @@ class Group extends HotspringModel {
   static defaultReadAccess = 'admin'; //admin, user, public
 
   static sequelizeDefinition = {
-    groupId: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    groupID: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     name: { type: DataTypes.STRING(255), allowNull: false },
     description: { type: DataTypes.STRING(1024) }
   };
-  static sequelizeConnections = [
-    { connection: "1M", parentType: "system.group", parentKey: "groupID", childType: "system.group_menu", childKey: "groupID" },
-    { connection: "MM", type1: "system.group", Key1: "groupID", type2: "system.menu", Key2: "menuID", midType: "system.group_menu" }
+
+  static sequelizeConnections = [    
+    { connectionType: "1M", parentmodel: "system.group", parentKey: 'groupID', childmodel: "system.group_menu", childKey: 'groupID', required: true },
+    { connectionType: "MM", parentmodel: "system.group", childmodel: "system.group_menu", peerModel: 'system.menu', required: true },
+
+    { connectionType: "1M", parentmodel: "system.group", parentKey: 'groupID', childmodel: "system.group_user", childKey: 'groupID', required: true },
+    { connectionType: "MM", parentmodel: "system.group", childmodel: "system.group_user", peerModel: 'system.user', required: true },
   ]
+
+  static seedData = [
+    {groupID: 1, name: 'admin', description: 'Administrators'},
+    {groupID: 2, name: 'user', description: 'Users'}
+  ];
 }
 
 module.exports = Group;

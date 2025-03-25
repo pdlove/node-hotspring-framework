@@ -16,10 +16,14 @@ class User extends HotspringModel {
     last_login: { type: DataTypes.DATE, allowNull: true },
     organizationID: { type: DataTypes.INTEGER, allowNull: false }
   };
-  static sequelizeConnections = [
-    // { connection: "1M", parentType: "system.menu", parentKey: "menuID", childType: "system.group_menu", childKey: "menuID" },
-    // { connection: "MM", type1: "system.group", Key1: "groupID", type2: "system.menu", Key2: "menuID", midType: "system.group_menu" }
+  static sequelizeConnections = [    
+    { connectionType: "1M", parentmodel: "system.user", parentKey: 'userID', childmodel: "system.group_user", childKey: 'userID', required: true },
+    { connectionType: "MM", parentmodel: "system.user", childmodel: "system.group_user", peerModel: 'system.group', required: true },
   ]
+  static seedData = [
+    {userID: 1, username: 'admin', email: 'admin@localhost', password: 'admin', organizationID: 1},
+  ];
+
 }
 
 module.exports = User;

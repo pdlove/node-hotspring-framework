@@ -140,3 +140,4 @@ dist
 
 # Ignore the default database created
 database.sqlite
+newdb.sqlite

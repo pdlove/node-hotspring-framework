@@ -16,7 +16,6 @@ class Stack extends HotspringModel {
     enabled: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true },
 
   };
-  static sequelizeConnections = {};
 }
 
 module.exports = Stack;
