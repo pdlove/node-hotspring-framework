@@ -41,7 +41,7 @@ class modelRoutes extends HotspringRoute {
                 return true;
             } else {
                 const model = global.hotspring.stacks[reqStack].models[reqModel];
-                res.json(await model.browseObjects(filter,null,pageSize, pageNum));
+                res.json(await model.browseObjects({ filter, pageSize, pageNum },null,pageSize, pageNum));
                 return true;
             }
         }

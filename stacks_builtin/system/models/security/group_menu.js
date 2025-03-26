@@ -13,8 +13,8 @@ class GroupMenu extends HotspringModel {
     accessLevel: { type: DataTypes.INTEGER, allowNull: false }
   };
   static sequelizeConnections = [    
-    { connectionType: "1M", parentmodel: "system.menu", parentKey: 'menuID', childmodel: "system.group_menu", childKey: 'menuID', required: true },
-    { connectionType: "1M", parentmodel: "system.group", parentKey: 'groupID', childmodel: "system.group_menu", childKey: 'groupID', required: true },    
+    { connectionType: "1M", parentmodel: "system.menu", childParentKey: 'menuID', childmodel: "system.group_menu", required: true },
+    { connectionType: "1M", parentmodel: "system.group", childParentKey: 'groupID', childmodel: "system.group_menu", required: true },    
   ]
 }
 

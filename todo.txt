@@ -9,10 +9,11 @@ Features in Development:
     Update Models to create relationships
 
 Next Features to Develop:
-    Need a way for a stack to introduce related menu items
+    When database is initialized in the beginning, the menu items are trying to create before the table is created.                     
     Implement a Data Interaction Object that is passed to jobs and routes.
         This object will contain only the models that the job or route declares it needs with declared permissions.
     Add support for a Virtual Model that aggregates Data but has relationships and fields (really a view)
+
 
 Future Features:
     Implement User Login Process (Global on/off for this function)

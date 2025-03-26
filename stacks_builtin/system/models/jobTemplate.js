@@ -27,11 +27,6 @@ class JobTemplate extends HotspringModel {
   static requiredModels = [];
   static defaultAccess = 'admin'; // admin, user, public
 
-//   sequelizeConnections = [
-//     { connection: "1M", parentType: "inventory.networkdevice", parentKey: "deviceID", childType: "syslog.LogBatch", childKey: "sourceDeviceID" },
-//     { connection: "1M", parentType: "inventory.networkdevice", parentKey: "deviceID", childType: "syslog.LogBatch", childKey: "collectorID" },
-//     { connection: "1M", parentType: "inventory.networkdevice", parentKey: "deviceID", childType: "syslog.LogBatch", childKey: "processingByID" },
-//     // { connection: "MM", type1: "system.group", Key1: "groupID", type2: "system.menu", Key2: "menuID", midType: "system.group_menu" }
-//   ]
+
 }
 module.exports = JobTemplate;

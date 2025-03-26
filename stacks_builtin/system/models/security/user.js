@@ -17,8 +17,8 @@ class User extends HotspringModel {
     organizationID: { type: DataTypes.INTEGER, allowNull: false }
   };
   static sequelizeConnections = [    
-    { connectionType: "1M", parentmodel: "system.user", parentKey: 'userID', childmodel: "system.group_user", childKey: 'userID', required: true },
-    { connectionType: "MM", parentmodel: "system.user", childmodel: "system.group_user", peerModel: 'system.group', required: true },
+    { connectionType: "1M", parentmodel: "system.user", childParentKey: 'userID', childmodel: "system.group_user", required: true },
+    { connectionType: "MM", parentmodel: "system.user", childParentKey: 'userID', childmodel: "system.group_user", childPeerKey: 'groupID', peerModel: 'system.group', required: true },
   ]
   static seedData = [
     {userID: 1, username: 'admin', email: 'admin@localhost', password: 'admin', organizationID: 1},

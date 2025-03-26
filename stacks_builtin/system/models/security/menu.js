@@ -24,9 +24,9 @@ class Menu extends HotspringModel {
   };
 
   static sequelizeConnections = [    
-    { connectionType: "1M", parentmodel: "system.stack", parentKey: 'stackID', childmodel: "system.menu", childKey: 'stackID', required: true },
-    { connectionType: "1M", parentmodel: "system.menu", parentKey: 'menuID', childmodel: "system.group_menu", childKey: 'menuID', required: true },
-    { connectionType: "MM", parentmodel: "system.menu", childmodel: "system.group_menu", peerModel: 'system.group', required: true },
+    { connectionType: "1M", parentmodel: "system.stack", childParentKey: 'stackID', childmodel: "system.menu", required: true },
+    { connectionType: "1M", parentmodel: "system.menu", childParentKey: 'menuID', childmodel: "system.group_menu", required: true },
+    { connectionType: "MM", parentmodel: "system.menu", childParentKey: 'menuID', childmodel: "system.group_menu", childPeerKey: 'groupID', peerModel: 'system.group', required: true },
   ]
   
   static sequelizeOptions = {

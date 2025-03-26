@@ -14,10 +14,7 @@ class Organization extends HotspringModel {
     phonenumber: { type: DataTypes.STRING, allowNull: true },
     primaryUserID: { type: DataTypes.INTEGER, allowNull: false }
   };
-  static sequelizeConnections = [
-    // { connection: "1M", parentType: "system.menu", parentKey: "menuID", childType: "system.group_menu", childKey: "menuID" },
-    // { connection: "MM", type1: "system.group", Key1: "groupID", type2: "system.menu", Key2: "menuID", midType: "system.group_menu" }
-  ]
+
 }
 
 module.exports = Organization;
