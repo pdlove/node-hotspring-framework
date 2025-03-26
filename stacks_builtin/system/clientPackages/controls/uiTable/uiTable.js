@@ -86,7 +86,11 @@ columns:
                 this.displayColumns.push(fieldname);
 
 		this.#domTable = document.createElement("table");
-        this.#domTable.classList.add("uiTable");
+        //this.#domTable.classList.add("uiTable");
+        this.#domTable.classList.add("table");
+        this.#domTable.classList.add("table-sm");
+        this.#domTable.classList.add("table-bordered");
+        this.#domTable.classList.add("table-striped");
 		
 		this.#domTHead = document.createElement("thead");
 		this.#domTable.appendChild(this.#domTHead);
