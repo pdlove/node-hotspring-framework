@@ -16,7 +16,7 @@ class modelRoutes extends HotspringRoute {
             const reqModel = req.params.model;
 
             let filter = req.query.filter;
-            if (filter) filter = JSON.parse(filter);
+            //if (filter) filter = JSON.parse(filter);
 
             let pageSize = req.query.pageSize;
             if (!pageSize) pageSize = 100000;
