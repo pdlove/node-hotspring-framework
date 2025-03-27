@@ -10,6 +10,7 @@ class uiTableColumn {
     order;
         
     type;
+    valueMap;
     caption;
     displayFormat;
     domCol = null;
@@ -31,9 +32,10 @@ class uiTableColumn {
             this.isIndex = false;            
             this.isVisible = true;
             this.order = 0;
-            this.type = "s";
+            this.type = "string";
             this.displayFormat = "";
             this.caption = this.name;
+            this.valueMap={};
         } else {
             this.name = options.name; //Required fieldName
             this.dataValue = options.dataValue || this.name;
@@ -43,6 +45,7 @@ class uiTableColumn {
             this.type = options.type || "s";
             this.displayFormat = options.displayFormat || "";
             this.caption = options.caption || this.name;
+            this.valueMap=options.valueMap || {};
             if (options.renderer) 
                 this.renderer = options.renderer;            
         }
@@ -123,6 +126,10 @@ class uiTableColumn {
             case "datetime":
                 displayData = this.renderDateTime(rawValue);
                 break;
+            case "enum":
+                const mapped = this.valueMap[rawValue];
+                if (mapped === undefined ) mapped="("+rawValue+")";
+                return mapped;
             case "bool":
                 if (rawValue)
                     displayData = '<input type="checkbox" checked>';
