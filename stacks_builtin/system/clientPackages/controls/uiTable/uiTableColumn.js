@@ -47,8 +47,16 @@ class uiTableColumn {
                 this.renderer = options.renderer;            
         }
         //Process if this is a subobject Property (Does not support arrays)
-        this.subObjectProperty = this.dataValue.split('.');
-        
+        this.subObjectProperty = [];
+        //Need to make sure it wasn't a quoted field. "syslog.message" for example is a valid field name. But "invetory.vm".serverName would be a two part.
+        const regex = /"([^"]*)"|([^."\\]+)/g;  // Capture quoted segments and unquoted segments
+        const result = [];
+        let match;
+        while ((match = regex.exec(this.dataValue)) !== null) {
+          // If it's a quoted segment, we take match[1], otherwise match[2]
+          this.subObjectProperty.push(match[1] || match[2]);
+        }
+
         //Need to process displayFormat to create the formatOptions object. This will vary base on datatype.
     }
 

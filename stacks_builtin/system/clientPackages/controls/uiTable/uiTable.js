@@ -77,7 +77,7 @@ columns:
         //If there aren't any columns defined, get them from the datasource.
         if (Object.keys(this.allColumns).length==0) {
             for (let test in this.tableRows[0])
-                this.addColumn(test);
+                this.addColumn({name: test, dataValue: '"'+test+'"'});
         }
 
         //If There aren't any display columns dump all of them into the display.
