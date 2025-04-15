@@ -1,3 +1,22 @@
+
+
+Critical: Verify Stack Load Process
+ 1) Load All Stacks from Disk
+ 2) Activate the System Stack
+ 3) Activate any stack enabled in config.json (Write database option to enable there as well)
+ 3) Load enabled option for all Stacks from database 
+ 4) Activate any stack enabled in the database.
+ 5) Connect relationships
+ 6) Sync database
+
+ Activation Process:
+	1) If stack is "system" then sync these models: "stack", "menu"
+	2) Check stack exists in stacks model.
+	3) Add or Edit the Stack
+	4) Add all models for the stack (These are automatically added to the sequel
+
+Default Configuration: Auto-enable all detected stacks
+
 Features in Development:
     Need to create the HotspringJob to allow running a job from a database entry.
         Screen to create a Job from a Hotspring Job Template.
@@ -7,6 +26,7 @@ Features in Development:
         Alerting when jobs stop that are "Service" jobs
     Update Models to allow multi-column pkeys
     Update Models to create relationships
+    Add to hotspringServer Initialize to fetch configuration from the database if initialized.
 
 Next Features to Develop:
     When database is initialized in the beginning, the menu items are trying to create before the table is created.                     

@@ -4,7 +4,9 @@ const mime = require('mime-types');
 
 class uiRoutes extends HotspringRoute {
     routeName = 'ui';
+    hotspring = null; // This is set when HotspringStack initializes the class.
 
+    
     defaultAccess = 'admin'; // admin, user, public
     apiRoutes() {
         return [
@@ -18,15 +20,15 @@ class uiRoutes extends HotspringRoute {
             const [reqStack, reqPackage] = reqFullPackageName.split('.', 2);
             const reqFilename = req.params.filename;
 
-            if (!global.hotspring.stacks[reqStack]) {
+            if (!this.hotspring.stacks[reqStack]) {
                 //res.status(404).send("Stack Not Found");
                 return false;
             }
-            if (!global.hotspring.stacks[reqStack].clientPackages[reqPackage]) {
+            if (!this.hotspring.stacks[reqStack].clientPackages[reqPackage]) {
                 //res.status(404).send("Package Not Found");
                 return false;
             }
-            let pkg = global.hotspring.stacks[reqStack].clientPackages[reqPackage];
+            let pkg = this.hotspring.stacks[reqStack].clientPackages[reqPackage];
 
             if (!reqFilename) {
                 // Return the JSON representing the combined package.

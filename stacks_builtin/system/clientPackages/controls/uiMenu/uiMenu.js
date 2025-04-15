@@ -84,7 +84,7 @@ class uiMenu {
     }
     setSelectedItem(id, performAction=true) {
         //Clear the flag on the selected item and all parents.
-        let workItem = this.selectedItem
+        let workItem = this.selectedItem || {};
         while (workItem) {
             workItem.isSelected=false;
             if (workItem.domLI) {
@@ -97,18 +97,19 @@ class uiMenu {
 
         //Set the flag on the new one and all parents
         this.selectedItem = this.#flatData[id];
-        workItem = this.selectedItem
-        if (workItem.domLI) workItem.domLI.classList.add("activetick"); //Only the actually selected item gets the tick.
+        workItem = this.selectedItem;
+        if (workItem && workItem.domLI) workItem.domLI.classList.add("activetick"); //Only the actually selected item gets the tick.
         while (workItem) {
             workItem.isSelected=true;
-            if (workItem.domLI) {
+            if (workItem && workItem.domLI) {
                 workItem.domLI.classList.add("active");
                 workItem.domLink.classList.remove("collapsed");
             }
             workItem=workItem.parent;
         }
         if (performAction) {
-            this.selectedItem.executeMenu();
+            if (this.selectedItem && this.selectedItem.executeMenu) //If the item has an action, perform it.
+                this.selectedItem.executeMenu();
         }
     }
 

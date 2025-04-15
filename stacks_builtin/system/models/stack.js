@@ -13,8 +13,7 @@ class Stack extends HotspringModel {
     remoteSource: { type: DataTypes.STRING(1024) },
     localPath: { type: DataTypes.STRING(1024), allowNull: false },
     configuration: { type: DataTypes.TEXT },
-    enabled: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true },
-
+    isEnabled: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true },
   };
 }
 

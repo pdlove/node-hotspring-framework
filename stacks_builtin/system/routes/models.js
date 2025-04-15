@@ -27,20 +27,20 @@ class modelRoutes extends HotspringRoute {
             //TODO: Add ability to pass sort order.
             if (!reqModel) {
                 //Need to send out a list of models.
-                if (!global.hotspring.stacks[reqStack]) {
+                if (!this.hotspring.stacks[reqStack]) {
                     res.status(404).send("Invalid Stack");
                     return true;        
                 }
                 let modelList = {};
-                for (const modelName in global.hotspring.stacks[reqStack].models) {
-                    const model = global.hotspring.stacks[reqStack].models[modelName];
+                for (const modelName in this.hotspring.stacks[reqStack].models) {
+                    const model = this.hotspring.stacks[reqStack].models[modelName];
                     const keys = model.sequelizeObject.primaryKeyAttributes
                     modelList[modelName]=keys;
                 }
                 res.json(modelList);    
                 return true;
             } else {
-                const model = global.hotspring.stacks[reqStack].models[reqModel];
+                const model = this.hotspring.stacks[reqStack].models[reqModel];
                 res.json(await model.browseObjects({ filter, pageSize, pageNum },null,pageSize, pageNum));
                 return true;
             }

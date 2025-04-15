@@ -124,7 +124,7 @@ class uiMenuItem {
                 if (this.clientPackageParameters.subMenu==='models') {
                     let stackList = (await API.getAPIData('system/stack/'));
                     for (let idx in stackList) {
-                        if (!stackList[idx].enabled) continue; //Skip disabled stacks.
+                        if (!stackList[idx]. isEnabled) continue; //Skip disabled stacks.
                         const stackName = stackList[idx].stackName;
                         let modelList = (await API.getAPIData('system/model/'+stackName)); 
                         let stackMenuID = menuID++;
