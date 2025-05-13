@@ -29,6 +29,8 @@ class Menu extends HotspringModel {
     { connectionType: "MM", parentmodel: "system.menu", childParentKey: 'menuID', childmodel: "system.group_menu", childPeerKey: 'groupID', peerModel: 'system.group', required: true },
   ]
   
+  static seedData = [];
+  
   static sequelizeOptions = {
     indexes: [
       { fields: ['stackId'] }

@@ -43,12 +43,13 @@ class uiMenu {
 
     #parseTreeFromFlat() {
         this.#treeData=[];
+        //Clear out the children and parent references.
+        for (let idx in this.#flatData) {        
+            this.#flatData[idx].children=[]; //Get the item
+        }
         for (let idx in this.#flatData) {        
             var menuItem = this.#flatData[idx]; //Get the item
             var parentItem = this.#flatData[menuItem.parent_menu_id]; //Get the parent
-            if (!menuItem.children) {
-                menuItem.children=[];
-            }
             
             if (parentItem) { //If there is a parent
                 if (!parentItem.children) parentItem.children=[]; //Create Child Array If Needed
