@@ -1,3 +1,4 @@
+const { or } = require('sequelize');
 const { HotspringModel, DataTypes } = require('../../../../lib/HotspringModel');
 
 class GroupMenu extends HotspringModel {
@@ -7,9 +8,9 @@ class GroupMenu extends HotspringModel {
   static defaultReadAccess = 'admin'; // admin, user, public
 
   static sequelizeDefinition = {
-    groupMenuID: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    groupID: { type: DataTypes.INTEGER, allowNull: false },
-    menuID: { type: DataTypes.INTEGER, allowNull: false },
+    organizationID: { type: DataTypes.UUIDV4, allowNull: true },
+    groupID: { type: DataTypes.UUIDV4, allowNull: false },
+    menuID: { type: DataTypes.UUIDV4, allowNull: false },
     accessLevel: { type: DataTypes.INTEGER, allowNull: false }
   };
   static sequelizeConnections = [    

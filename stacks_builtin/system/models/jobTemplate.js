@@ -7,7 +7,7 @@ class JobTemplate extends HotspringModel {
   static defaultReadAccess = 'admin'; //admin, user, public
 
   static sequelizeDefinition = {
-    jobTemplateID: { type: DataTypes.INTEGER, allowNull: false, primaryKey: true, autoIncrement: true },
+    jobTemplateID: { type: DataTypes.UUIDV4, allowNull: false, primaryKey: true },
     stack: { type: DataTypes.STRING, allowNull: false },
     jobTemplateName: { type: DataTypes.STRING, allowNull: false },
     jobTemplateLanguage: { type: DataTypes.STRING, allowNull: false, defaultValue: 'javascript' },

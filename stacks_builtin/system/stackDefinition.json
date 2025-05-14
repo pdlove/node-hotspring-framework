@@ -7,5 +7,5 @@
     { "name": "platform", "displayText": "Platform Configuration", "menuPath": "Administration>Security", "defaultGroup": "admin", "clientPackage": "system.platform-config", "clientPackageParameters": { } },
     { "name": "Raw Data", "displayText": "Raw Data", "menuPath": "Debug", "defaultGroup": "admin", "clientPackage": "system.uiMenu", "clientPackageParameters": { "subMenu": "models" } }    
     ],
-  "modelsToSeed": [ "user", "menu", "group", "group_menu", "group_user" ]
+  "modelsToSeed": [ "organization", "user", "menu", "group", "group_menu", "group_user" ]
 }

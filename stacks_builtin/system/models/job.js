@@ -1,3 +1,4 @@
+const { or } = require('sequelize');
 const { HotspringModel, DataTypes } = require('../../../lib/HotspringModel');
 
 class Job extends HotspringModel {
@@ -7,8 +8,8 @@ class Job extends HotspringModel {
   static defaultReadAccess = 'admin'; //admin, user, public
 
   static sequelizeDefinition = {
-    jobID: { type: DataTypes.INTEGER, allowNull: false, primaryKey: true, autoIncrement: true },
-    jobTemplateID: { type: DataTypes.INTEGER, allowNull: false },
+    jobID: { type: DataTypes.UUIDV4, primaryKey: true},
+    jobTemplateID: { type: DataTypes.UUIDV4, allowNull: false },
     jobName: { type: DataTypes.STRING, allowNull: false },
     runInterval: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 4 },
     runIntervalUnits: { type: DataTypes.STRING, allowNull: false, defaultValue: 'hour' },
@@ -23,7 +24,8 @@ class Job extends HotspringModel {
     executeBy: { type: DataTypes.STRING, allowNull: true },
     configuration: { type: DataTypes.JSON, allowNull: false, defaultValue: {} },
     enabled: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
-    jobStatus: {type: DataTypes.SMALLINT, defaultValue: 0, allowNull: false, enumValues: {0: 'Created', 1: 'Ready', 2: 'Running', 11:'Success', 12:'Error', 13:'Ignored'} }
+    jobStatus: {type: DataTypes.SMALLINT, defaultValue: 0, allowNull: false, enumValues: {0: 'Created', 1: 'Ready', 2: 'Running', 11:'Success', 12:'Error', 13:'Ignored'} },
+    organizationID: { type: DataTypes.UUIDV4, allowNull: true }
   };
 
   static requiredModels = [];

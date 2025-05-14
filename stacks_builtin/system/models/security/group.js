@@ -7,7 +7,8 @@ class Group extends HotspringModel {
   static defaultReadAccess = 'admin'; //admin, user, public
 
   static sequelizeDefinition = {
-    groupID: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    groupID: { type: DataTypes.UUIDV4, primaryKey: true },
+    organizationid: { type: DataTypes.UUIDV4, allowNull: true },
     name: { type: DataTypes.STRING(255), allowNull: false },
     description: { type: DataTypes.STRING(1024) } 
   };
@@ -22,9 +23,26 @@ class Group extends HotspringModel {
   ]
 
   static seedData = [
-    {groupID: 1, name: 'admin', description: 'Administrators'},
-    {groupID: 2, name: 'user', description: 'Users'}
-  ];
+ {
+   "groupID": "6c7a6187-9871-4a3d-ae35-15e534002163",
+   "organizationID": "",
+   "name": " meadadmin",
+   "description": " MEAD Administrators (Everything)"
+ },
+ {
+   "groupID": "f62ddec6-e81a-4740-bd79-8b0dde5d38e0",
+   "organizationID": "",
+   "name": " orgadmin",
+   "description": " Organization Administrators"
+ },
+ {
+   "groupID": "fe030ecf-e85c-4804-a7c9-0a55e65e1305",
+   "organizationID": "",
+   "name": " orguser",
+   "description": " Organization Users"
+ }
+]
+
 }
 
 module.exports = Group;

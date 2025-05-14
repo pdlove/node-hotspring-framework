@@ -8,7 +8,7 @@ class Menu extends HotspringModel {
   static defaultBrowsePageSize = 0; // 0 means no limit
 
   static sequelizeDefinition = {
-    menuID: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    menuID: { type: DataTypes.UUIDV4, primaryKey: true },
     name: { type: DataTypes.STRING(255), allowNull: false },
     displayText: { type: DataTypes.STRING(255), allowNull: false },
     iconText: { type: DataTypes.STRING(255) },
@@ -20,7 +20,7 @@ class Menu extends HotspringModel {
     enabled: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true },
     debug: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
     production: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true },
-    stackID: { type: DataTypes.INTEGER, allowNull: true }
+    stackID: { type: DataTypes.UUIDV4, allowNull: true }
   };
 
   static sequelizeConnections = [    
@@ -28,9 +28,7 @@ class Menu extends HotspringModel {
     { connectionType: "1M", parentmodel: "system.menu", childParentKey: 'menuID', childmodel: "system.group_menu", required: true },
     { connectionType: "MM", parentmodel: "system.menu", childParentKey: 'menuID', childmodel: "system.group_menu", childPeerKey: 'groupID', peerModel: 'system.group', required: true },
   ]
-  
-  static seedData = [];
-  
+
   static sequelizeOptions = {
     indexes: [
       { fields: ['stackId'] }

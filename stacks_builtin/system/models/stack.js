@@ -7,7 +7,7 @@ class Stack extends HotspringModel {
   static defaultReadAccess = 'admin'; //admin, user, public
 
   static sequelizeDefinition = {
-    stackId: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    stackId: { type: DataTypes.UUIDV4, primaryKey: true },
     stackName: { type: DataTypes.STRING(255), allowNull: false },
     description: { type: DataTypes.STRING(2048), allowNull: false, defaultValue: "" },
     remoteSource: { type: DataTypes.STRING(1024) },
